@@ -3,13 +3,16 @@ use sha2::{Sha256, Digest};
 /// Fonction pour calculer le hash à partir du nonce, des données, et du timestamp
 fn calculate_hash(nonce: u64, data: &str, timestamp: u64) -> String {
     let mut hasher = Sha256::new();
-    hasher.update(nonce.to_string());
+    
+    // Utiliser le même ordre que dans la génération du hash : data, timestamp, nonce
     hasher.update(data);
     hasher.update(timestamp.to_string());
+    hasher.update(nonce.to_string());
 
     let result = hasher.finalize();
     format!("{:x}", result)
 }
+
 
 /// Fonction pour vérifier si un hash correspond au hash attendu
 fn verify_pow(nonce: u64, data: &str, timestamp: u64, expected_hash: &str) -> bool {
