@@ -18,10 +18,10 @@ fn calculate_hash(nonce: u64, data: &str, timestamp: u64) -> String {
 fn verify_pow(nonce: u64, data: &str, timestamp: u64, expected_hash: &str) -> bool {
     let computed_hash = calculate_hash(nonce, data, timestamp);
     if computed_hash == expected_hash {
-        println!("Proof of Work verified successfully: {}", computed_hash);
+        println!("PoW valide : {}", computed_hash);
         true
     } else {
-        println!("Proof of Work verification failed.");
+        println!("La vérification du PoW a échoué.");
         println!("Expected: {}", expected_hash);
         println!("Computed: {}", computed_hash);
         false
