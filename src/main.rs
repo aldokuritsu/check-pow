@@ -13,7 +13,6 @@ fn calculate_hash(nonce: u64, data: &str, timestamp: u64) -> String {
     format!("{:x}", result)
 }
 
-
 /// Fonction pour vérifier si un hash correspond au hash attendu
 fn verify_pow(nonce: u64, data: &str, timestamp: u64, expected_hash: &str) -> bool {
     let computed_hash = calculate_hash(nonce, data, timestamp);
